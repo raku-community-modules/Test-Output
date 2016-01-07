@@ -4,6 +4,28 @@
 
 Test::Output - Test the output to STDOUT and STDERR your program generates
 
+# TABLE OF CONTENTS
+- [NAME](#name)
+- [SYNOPSIS](#synopsis)
+- [DESCRIPTION](#description)
+- [EXPORTED SUBROUTINES](#exported-subroutines)
+    - [`is` Tests](#is-tests)
+        - [`output-is`](#output-is)
+        - [`stdout-is`](#stdout-is)
+        - [`stderr-is`](#stderr-is)
+    - [`like` Tests](#like-tests)
+        - [`output-like`](#output-like)
+        - [`stdout-like`](#stdout-like)
+        - [`stderr-like`](#stderr-like)
+    - [Output Capture](#output-capture)
+        - [`output-from`](#output-from)
+        - [`stdout-from`](#stdout-from)
+        - [`stderr-from`](#stderr-from)
+- [REPOSITORY](#repository)
+- [BUGS](#bugs)
+- [AUTHOR](#author)
+- [LICENSE](#license)
+
 # SYNOPSIS
 
 ```perl6
