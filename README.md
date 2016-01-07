@@ -55,6 +55,8 @@ Uses `is` function from `Test` module to test whether the combined
 STDERR/STDOUT output from a piece of code matches the given string. Takes
 an **optional** test description.
 
+----
+
 ### `stdout-is`
 
 ![][sub-signature]
@@ -69,6 +71,8 @@ an **optional** test description.
 
 Same as [`output-is`](#output-is), except tests STDOUT only.
 
+----
+
 ### `stderr-is`
 
 ![][sub-signature]
@@ -82,6 +86,8 @@ Same as [`output-is`](#output-is), except tests STDOUT only.
 ```
 
 Same as [`output-is`](#output-is), except tests STDERR only.
+
+----
 
 ## `like` Tests
 
@@ -102,6 +108,8 @@ Uses `like` function from `Test` module to test whether the combined
 STDERR/STDOUT output from a piece of code matches the given `Regex`. Takes
 an **optional** test description.
 
+----
+
 ### `stdout-like`
 
 ![][sub-signature]
@@ -117,6 +125,8 @@ an **optional** test description.
 
 Same as [`output-like`](#output-like), except tests STDOUT only.
 
+----
+
 ### `stderr-like`
 
 ![][sub-signature]
@@ -131,6 +141,8 @@ Same as [`output-like`](#output-like), except tests STDOUT only.
 ```
 
 Same as [`output-like`](#output-like), except tests STDERR only.
+
+----
 
 ## Output Capture
 
@@ -171,6 +183,8 @@ Captures and returns merged STDOUT/STDERR output from the given piece of code.
 
 Same as [`output-from`](#output-from), except captures STDOUT only.
 
+----
+
 ### `stderr-from`
 
 ![][sub-signature]
@@ -187,6 +201,8 @@ Same as [`output-from`](#output-from), except captures STDOUT only.
 ```
 
 Same as [`output-from`](#output-from), except captures STDERR only.
+
+----
 
 # REPOSITORY
 
