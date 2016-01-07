@@ -2,7 +2,7 @@
     "perl"         : "6.c",
     "name"         : "Test::Output",
     "version"      : "1.001001",
-    "description"  : "est the output to STDOUT and STDERR your program generates",
+    "description"  : "Test the output to STDOUT and STDERR your program generates",
     "depends"      : [ "Test" ],
     "test-depends" : [ "Test" ],
     "provides"     : {
