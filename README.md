@@ -16,13 +16,17 @@ Test::Output - Test the output to STDOUT and STDERR your program generates
         say "After warning";
     };
 
+    # Test code's output using exact match ('is')
     output-is   &test-code, "42\nwarning!\nAfter warning\n", 'testing output';
-    output-like &test-code, /42.+warning.+After/, 'testing output (regex)';
     stdout-is   &test-code, "42\nAfter warning\n",  'testing stdout';
-    stdout-like &test-code, /42/, 'testing stdout (regex)';
     stderr-is   &test-code, "warning!\n", 'testing stderr';
+
+    # Test code's output using regex ('like')
+    output-like &test-code, /42.+warning.+After/, 'testing output (regex)';
+    stdout-like &test-code, /42/, 'testing stdout (regex)';
     stderr-like &test-code, /^ "warning!\n" $/, 'testing stderr (regex)';
 
+    # Just capture code's output and do whatever you want with it
     is output-from( &test-code ), "42\nwarning!\nAfter warning\n";
     is stdout-from( &test-code ), "42\nAfter warning\n";
     is stderr-from( &test-code ), "warning!\n";
