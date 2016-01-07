@@ -40,10 +40,12 @@ piece of code and evaluate it for some criteria.
 
 ### `output-is`
 
+[][sub-signature]
 ```perl6
     sub output-is (&code, Str $expected, Str $desc? );
 ```
 
+[][sub-usage-example]
 ```perl6
     output-is { say 42; note 43; say 44 }, "42\n43\n44\n",
         'Merged output from STDOUT/STDERR looks fine!';
@@ -55,10 +57,12 @@ an **optional** test description.
 
 ### `stdout-is`
 
+[][sub-signature]
 ```perl6
     sub stdout-is (&code, Str $expected, Str $desc? );
 ```
 
+[][sub-usage-example]
 ```perl6
     stdout-is { say 42; note 43; say 44 }, "42\n44\n", 'STDOUT looks fine!';
 ```
@@ -67,10 +71,12 @@ Same as [`output-is`](#output-is), except tests STDOUT only.
 
 ### `stderr-is`
 
+[][sub-signature]
 ```perl6
     sub stderr-is (&code, Str $expected, Str $desc? );
 ```
 
+[][sub-usage-example]
 ```perl6
     stderr-is { say 42; note 43; say 44 }, "43\n", 'STDERR looks fine!';
 ```
@@ -81,10 +87,12 @@ Same as [`output-is`](#output-is), except tests STDERR only.
 
 ### `output-like`
 
+[][sub-signature]
 ```perl6
     sub output-like (&code, Regex $expected, Str $desc? );
 ```
 
+[][sub-usage-example]
 ```perl6
     output-like { say 42; note 43; say 44 }, /42 .+ 43 .+ 44/,
         'Merged output from STDOUT/STDERR matches the regex!';
@@ -96,10 +104,12 @@ an **optional** test description.
 
 ### `stdout-like`
 
+[][sub-signature]
 ```perl6
     sub stdout-like (&code, Regex $expected, Str $desc? );
 ```
 
+[][sub-usage-example]
 ```perl6
     stdout-like { say 42; note 43; say 44 }, /42 \n 44/,
         'STDOUT matches the regex!';
@@ -109,10 +119,12 @@ Same as [`output-like`](#output-like), except tests STDOUT only.
 
 ### `stderr-like`
 
+[][sub-signature]
 ```perl6
     sub stderr-like (&code, Regex $expected, Str $desc? );
 ```
 
+[][sub-usage-example]
 ```perl6
     stderr-like { say 42; note 43; say 44 }, /^ 43\n $/,
         'STDERR matches the regex!';
@@ -124,10 +136,12 @@ Same as [`output-like`](#output-like), except tests STDERR only.
 
 ### `output-from`
 
+[][sub-signature]
 ```perl6
     sub output-from (&code) returns Str;
 ```
 
+[][sub-usage-example]
 ```perl6
     my $output = output-from { say 42; note 43; say 44 };
     say "Captured $output from our program!";
@@ -140,10 +154,12 @@ Captures and returns merged STDOUT/STDERR output from the given piece of code.
 
 ### `stdout-from`
 
+[][sub-signature]
 ```perl6
     sub stdout-from (&code) returns Str;
 ```
 
+[][sub-usage-example]
 ```perl6
     my $stdout = stdout-from { say 42; note 43; say 44 };
     say "Captured $stdout from our program!";
@@ -155,10 +171,12 @@ Same as [`output-from`](#output-from), except captures STDOUT only.
 
 ### `stderr-from`
 
+[][sub-signature]
 ```perl6
     sub stderr-from (&code) returns Str;
 ```
 
+[][sub-usage-example]
 ```perl6
     my $stderr = stderr-from { say 42; note 43; say 44 };
     say "Captured $stderr from our program!";
@@ -190,3 +208,6 @@ Some of the IO capturing code was borrowed from
 You can use and distribute this module under the terms of the
 The Artistic License 2.0. See the `LICENSE` file included in this
 distribution for complete details.
+
+[sub-signature]: _chromatin/sub-signature.png
+[sub-usage-example]: _chromatin/sub-usage-example.png
