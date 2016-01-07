@@ -7,10 +7,166 @@ Test::Output - Test the output to STDOUT and STDERR your program generates
 # SYNOPSIS
 
 ```perl6
+    use Test;
     use Test::Output;
 
-    output-is { say 42 }, "42", 'Output looks right';
+    my &test-code = sub {
+        say 42;
+        note 'warning!';
+        say "After warning";
+    };
+
+    output-is   &test-code, "42\nwarning!\nAfter warning\n", 'testing output-is';
+    output-like &test-code, /42.+warning.+After/, 'testing output-like';
+    stdout-is   &test-code, "42\nAfter warning\n";
+    stdout-like &test-code, /42/;
+    stderr-is   &test-code, "warning!\n";
+    stderr-like &test-code, /^ "warning!\n" $/;
+
+    is output-from( &test-code ), "42\nwarning!\nAfter warning\n";
+    is stdout-from( &test-code ), "42\nAfter warning\n";
+    is stderr-from( &test-code ), "warning!\n";
+
 ```
+
+# DESCRIPTION
+
+This module allows you to capture the output (STDOUT/STDERR/BOTH) of a
+piece of code and evaluate it for some criteria.
+
+# EXPORTED SUBROUTINES
+
+## `is` Tests
+
+### `output-is`
+
+```perl6
+    sub output-is (&code, Str $expected, Str $desc? );
+```
+
+```perl6
+    output-is { say 42; note 43; say 44 }, "42\n43\n44\n",
+        'Merged output from STDOUT/STDERR looks fine!';
+```
+
+Uses `is` function from `Test` module to test whether the combined
+STDERR/STDOUT output from a piece of code matches the given string. Takes
+an **optional** test description.
+
+### `stdout-is`
+
+```perl6
+    sub stdout-is (&code, Str $expected, Str $desc? );
+```
+
+```perl6
+    stdout-is { say 42; note 43; say 44 }, "42\n44\n", 'STDOUT looks fine!';
+```
+
+Same as [`output-is`](#output-is), except tests STDOUT only.
+
+### `stderr-is`
+
+```perl6
+    sub stderr-is (&code, Str $expected, Str $desc? );
+```
+
+```perl6
+    stderr-is { say 42; note 43; say 44 }, "43\n", 'STDERR looks fine!';
+```
+
+Same as [`output-is`](#output-is), except tests STDERR only.
+
+## `like` Tests
+
+### `output-like`
+
+```perl6
+    sub output-like (&code, Regex $expected, Str $desc? );
+```
+
+```perl6
+    output-like { say 42; note 43; say 44 }, /42 .+ 43 .+ 44/,
+        'Merged output from STDOUT/STDERR matches the regex!';
+```
+
+Uses `like` function from `Test` module to test whether the combined
+STDERR/STDOUT output from a piece of code matches the given `Regex`. Takes
+an **optional** test description.
+
+### `stdout-like`
+
+```perl6
+    sub stdout-like (&code, Regex $expected, Str $desc? );
+```
+
+```perl6
+    stdout-like { say 42; note 43; say 44 }, /42 \n 44/,
+        'STDOUT matches the regex!';
+```
+
+Same as [`output-like`](#output-like), except tests STDOUT only.
+
+### `stderr-like`
+
+```perl6
+    sub stderr-like (&code, Regex $expected, Str $desc? );
+```
+
+```perl6
+    stderr-like { say 42; note 43; say 44 }, /^ 43\n $/,
+        'STDERR matches the regex!';
+```
+
+Same as [`output-like`](#output-like), except tests STDERR only.
+
+## Output Capture
+
+### `output-from`
+
+```perl6
+    sub output-from (&code) returns Str;
+```
+
+```perl6
+    my $output = output-from { say 42; note 43; say 44 };
+    say "Captured $output from our program!";
+
+    is $output, "42\nwarning!\nAfter warning\n",
+        'captured merged STDOUT/STDERR look fine';
+```
+
+Captures and returns merged STDOUT/STDERR output from the given piece of code.
+
+### `stdout-from`
+
+```perl6
+    sub stdout-from (&code) returns Str;
+```
+
+```perl6
+    my $stdout = stdout-from { say 42; note 43; say 44 };
+    say "Captured $stdout from our program!";
+
+    is $stdout, "42\nAfter warning\n", 'captured STDOUT looks fine';
+```
+
+Same as [`output-from`](#output-from), except captures STDOUT only.
+
+### `stderr-from`
+
+```perl6
+    sub stderr-from (&code) returns Str;
+```
+
+```perl6
+    my $stderr = stderr-from { say 42; note 43; say 44 };
+    say "Captured $stderr from our program!";
+
+    is $stderr, "warning\n", 'captured STDERR looks fine';
+```
+
+Same as [`output-from`](#output-from), except captures STDERR only.
 
 # REPOSITORY
 
@@ -25,6 +181,9 @@ https://github.com/zoffixznet/perl6-Test-Output/issues
 # AUTHOR
 
 Zoffix Znet (http://zoffix.com/)
+
+Some of the IO capturing code was borrowed from
+[IO::String by hoelzro](http://modules.perl6.org/repo/IO::String)
 
 # LICENSE
 
