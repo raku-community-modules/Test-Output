@@ -152,6 +152,8 @@ Same as [`output-like`](#output-like), except tests STDERR only.
 
 Captures and returns merged STDOUT/STDERR output from the given piece of code.
 
+----
+
 ### `stdout-from`
 
 ![][sub-signature]
