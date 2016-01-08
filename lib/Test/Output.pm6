@@ -29,11 +29,16 @@ my sub capture (&code) {
     my $bag = IO::Bag.new;
     my $out = IO::Capture::Single.new: :$bag        ;
     my $err = IO::Capture::Single.new: :$bag :is-err;
-    {
-        my $*OUT = $out;
-        my $*ERR = $err;
-        &code();
-    }
+
+    my $saved-out = $PROCESS::OUT;
+    my $saved-err = $PROCESS::ERR;
+    $PROCESS::OUT = $out;
+    $PROCESS::ERR = $err;
+
+    &code();
+
+    $PROCESS::OUT = $saved-out;
+    $PROCESS::ERR = $saved-err;
 
     return {:out($bag.out), :err($bag.err), :all($bag.all)};
 }
