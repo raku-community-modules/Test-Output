@@ -244,9 +244,6 @@ https://github.com/zoffixznet/perl6-Test-Output/issues
 
 Zoffix Znet (http://zoffix.com/)
 
-Some of the IO capturing code was borrowed from
-[IO::String by hoelzro](http://modules.perl6.org/repo/IO::String)
-
 # LICENSE
 
 You can use and distribute this module under the terms of the
