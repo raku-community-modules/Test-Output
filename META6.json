@@ -9,7 +9,7 @@
     "provides"     : {
         "Test::Output" : "lib/Test/Output.pm6"
     },
-    "authors"      : [ "Zoffix Znet" ],
+    "authors"      : [ "Zoffix Znet + JJ Merelo" ],
     "support"      : {"source"   : "git://github.com/zoffixznet/perl6-Test-Output.git"}
 }
 
