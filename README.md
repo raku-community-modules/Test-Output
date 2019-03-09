@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/zoffixznet/perl6-Test-Output.svg)](https://travis-ci.org/zoffixznet/perl6-Test-Output)
+[![Build Status](https://travis-ci.org/perl6-community-modules/perl6-Test-Output.svg)](https://travis-ci.org/perl6-community-modules/perl6-Test-Output)
 
 # NAME
 
@@ -29,6 +29,7 @@ Test::Output - Test the output to STDOUT and STDERR your program generates
 # SYNOPSIS
 
 ```perl6
+    use v6.d;
     use Test;
     use Test::Output;
 
@@ -58,7 +59,15 @@ Test::Output - Test the output to STDOUT and STDERR your program generates
 # DESCRIPTION
 
 This module allows you to capture the output (STDOUT/STDERR/BOTH) of a
-piece of code and evaluate it for some criteria.
+piece of code and evaluate it for some criteria. It needs version 6.d
+of the language, since it's following specs that were deployed for
+that version. If you need to go with 6.c, download 1.001001
+from
+[here](https://github.com/perl6-community-modules/perl6-Test-Output/releases) or
+via  `git clone`+
+
+    git checkout v1.001001
+    zef install .
 
 # EXPORTED SUBROUTINES
 
