@@ -1,8 +1,8 @@
 {
-    "perl"         : "6.c",
+    "perl"         : "6.d",
     "name"         : "Test::Output",
     "license"      : "Artistic-2.0",
-    "version"      : "1.001001",
+    "version"      : "1.001002",
     "description"  : "Test the output to STDOUT and STDERR your program generates",
     "depends"      : [ "Test" ],
     "test-depends" : [ "Test" ],
