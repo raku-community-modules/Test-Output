@@ -14,15 +14,27 @@ my class IO::Bag {
 my class IO::Capture::Single is IO::Handle {
     has Bool    $.is-err =  False   ;
     has IO::Bag $.bag    is required;
+    
+    submethod TWEAK {
+        self.encoding: 'utf8'; # set up encoder/decoder 
+    }
 
-    method print-nl { self.print($.nl-out); }
-    method print (*@what) {
-                    $.bag.all-contents.push: @what.join: '';
-        $!is-err ?? $.bag.err-contents.push: @what.join: ''
-                 !! $.bag.out-contents.push: @what.join: '';
+#   method print-nl { self.print($.nl-out); }
+#   method print (*@what) {
+#                   $.bag.all-contents.push: @what.join: '';
+#       $!is-err ?? $.bag.err-contents.push: @what.join: ''
+#                !! $.bag.out-contents.push: @what.join: '';
+#        True;
+#   }
 
+    method WRITE( IO::Handle:D: Blob:D \data --> Bool:D ) {
+        my $str = data.decode();
+        $.bag.all-contents.push: $str;
+        $!is-err ?? $.bag.err-contents.push: $str
+                 !! $.bag.out-contents.push: $str;
         True;
     }
+
 }
 
 my sub capture (&code) {
@@ -32,6 +44,7 @@ my sub capture (&code) {
 
     my $saved-out = $PROCESS::OUT;
     my $saved-err = $PROCESS::ERR;
+
     $PROCESS::OUT = $out;
     $PROCESS::ERR = $err;
 
