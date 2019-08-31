@@ -1,5 +1,5 @@
 #!perl6
-use lib 'lib';
+use lib '.';
 use Test;
 use Test::Output;
 
