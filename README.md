@@ -242,12 +242,12 @@ Same as [`output-from`](#output-from), except captures STDERR only.
 # REPOSITORY
 
 Fork this module on GitHub:
-https://github.com/zoffixznet/perl6-Test-Output
+https://github.com/raku-community-modules/Test-Output
 
 # BUGS
 
 To report bugs or request features, please use
-https://github.com/zoffixznet/perl6-Test-Output/issues
+https://github.com/raku-community-modules/Test-Output/issues
 
 # AUTHOR
 
