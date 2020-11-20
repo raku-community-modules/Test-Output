@@ -10,6 +10,6 @@
         "Test::Output" : "lib/Test/Output.pm6"
     },
     "authors"      : [ "Zoffix Znet + JJ Merelo" ],
-    "support"      : {"source"   : "git://github.com/perl6-community-modules/perl6-Test-Output.git"}
+    "support"      : {"source"   : "git://github.com/raku-community-modules/Test-Output.git"}
 }
 
