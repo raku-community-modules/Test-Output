@@ -26,7 +26,7 @@ Test::Output - Test the output to STDOUT and STDERR your program generates
 
 # SYNOPSIS
 
-```perl6
+```raku
     use v6.d;
     use Test;
     use Test::Output;
@@ -61,7 +61,7 @@ piece of code and evaluate it for some criteria. It needs version 6.d
 of the language, since it's following specs that were deployed for
 that version. If you need to go with 6.c, download 1.001001
 from
-[here](https://github.com/perl6-community-modules/perl6-Test-Output/releases) or
+[here](https://github.com/raku-community-modules/raku-Test-Output/releases) or
 via  `git clone`+
 
     git checkout v1.001001
@@ -74,12 +74,12 @@ via  `git clone`+
 ### `output-is`
 
 ![][sub-signature]
-```perl6
+```raku
     sub output-is (&code, Str $expected, Str $desc? );
 ```
 
 ![][sub-usage-example]
-```perl6
+```raku
     output-is { say 42; note 43; say 44 }, "42\n43\n44\n",
         'Merged output from STDOUT/STDERR looks fine!';
 ```
@@ -93,12 +93,12 @@ an **optional** test description.
 ### `stdout-is`
 
 ![][sub-signature]
-```perl6
+```raku
     sub stdout-is (&code, Str $expected, Str $desc? );
 ```
 
 ![][sub-usage-example]
-```perl6
+```raku
     stdout-is { say 42; note 43; say 44 }, "42\n44\n", 'STDOUT looks fine!';
 ```
 
@@ -109,12 +109,12 @@ Same as [`output-is`](#output-is), except tests STDOUT only.
 ### `stderr-is`
 
 ![][sub-signature]
-```perl6
+```raku
     sub stderr-is (&code, Str $expected, Str $desc? );
 ```
 
 ![][sub-usage-example]
-```perl6
+```raku
     stderr-is { say 42; note 43; say 44 }, "43\n", 'STDERR looks fine!';
 ```
 
@@ -127,12 +127,12 @@ Same as [`output-is`](#output-is), except tests STDERR only.
 ### `output-like`
 
 ![][sub-signature]
-```perl6
+```raku
     sub output-like (&code, Regex $expected, Str $desc? );
 ```
 
 ![][sub-usage-example]
-```perl6
+```raku
     output-like { say 42; note 43; say 44 }, /42 .+ 43 .+ 44/,
         'Merged output from STDOUT/STDERR matches the regex!';
 ```
@@ -146,12 +146,12 @@ an **optional** test description.
 ### `stdout-like`
 
 ![][sub-signature]
-```perl6
+```raku
     sub stdout-like (&code, Regex $expected, Str $desc? );
 ```
 
 ![][sub-usage-example]
-```perl6
+```raku
     stdout-like { say 42; note 43; say 44 }, /42 \n 44/,
         'STDOUT matches the regex!';
 ```
@@ -163,12 +163,12 @@ Same as [`output-like`](#output-like), except tests STDOUT only.
 ### `stderr-like`
 
 ![][sub-signature]
-```perl6
+```raku
     sub stderr-like (&code, Regex $expected, Str $desc? );
 ```
 
 ![][sub-usage-example]
-```perl6
+```raku
     stderr-like { say 42; note 43; say 44 }, /^ 43\n $/,
         'STDERR matches the regex!';
 ```
@@ -182,12 +182,12 @@ Same as [`output-like`](#output-like), except tests STDERR only.
 ### `output-from`
 
 ![][sub-signature]
-```perl6
+```raku
     sub output-from (&code) returns Str;
 ```
 
 ![][sub-usage-example]
-```perl6
+```raku
     my $output = output-from { say 42; note 43; say 44 };
     say "Captured $output from our program!";
 
@@ -202,12 +202,12 @@ Captures and returns merged STDOUT/STDERR output from the given piece of code.
 ### `stdout-from`
 
 ![][sub-signature]
-```perl6
+```raku
     sub stdout-from (&code) returns Str;
 ```
 
 ![][sub-usage-example]
-```perl6
+```raku
     my $stdout = stdout-from { say 42; note 43; say 44 };
     say "Captured $stdout from our program!";
 
@@ -221,12 +221,12 @@ Same as [`output-from`](#output-from), except captures STDOUT only.
 ### `stderr-from`
 
 ![][sub-signature]
-```perl6
+```raku
     sub stderr-from (&code) returns Str;
 ```
 
 ![][sub-usage-example]
-```perl6
+```raku
     my $stderr = stderr-from { say 42; note 43; say 44 };
     say "Captured $stderr from our program!";
 
