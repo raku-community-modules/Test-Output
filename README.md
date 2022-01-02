@@ -61,7 +61,7 @@ piece of code and evaluate it for some criteria. It needs version 6.d
 of the language, since it's following specs that were deployed for
 that version. If you need to go with 6.c, download 1.001001
 from
-[here](https://github.com/raku-community-modules/raku-Test-Output/releases) or
+[here](https://github.com/raku-community-modules/Test-Output/releases) or
 via  `git clone`+
 
     git checkout v1.001001
