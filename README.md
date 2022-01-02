@@ -247,7 +247,7 @@ https://github.com/raku-community-modules/Test-Output
 To report bugs or request features, please use
 https://github.com/raku-community-modules/Test-Output/issues
 
-# AUTHOR
+# ORIGINAL AUTHOR
 
 Zoffix Znet (http://zoffix.com/)
 
