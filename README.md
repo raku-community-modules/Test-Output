@@ -1,4 +1,4 @@
-# NAME
+# NAME [![Test in a Raku container](https://github.com/raku-community-modules/Test-Output/actions/workflows/test.yaml/badge.svg)](https://github.com/raku-community-modules/Test-Output/actions/workflows/test.yaml)
 
 Test::Output - Test the output to STDOUT and STDERR your program generates
 
