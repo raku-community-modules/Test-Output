@@ -1,5 +1,3 @@
-[![Build Status](https://travis-ci.org/perl6-community-modules/perl6-Test-Output.svg)](https://travis-ci.org/perl6-community-modules/perl6-Test-Output)
-
 # NAME
 
 Test::Output - Test the output to STDOUT and STDERR your program generates
