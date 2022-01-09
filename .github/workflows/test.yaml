@@ -1,17 +1,13 @@
-name: "Test in a Raku container"
+name: "Tests"
 on: [ push, pull_request ]
 jobs:
   test:
     runs-on: ubuntu-latest
-    permissions:
-      packages: read
-    container:
-      image: ghcr.io/jj/raku-zef-gha
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-      - name: Test
-        run: zef --debug test .
+      - name: Test-install
+        uses: JJ/raku-test-action@main
 
 
 
