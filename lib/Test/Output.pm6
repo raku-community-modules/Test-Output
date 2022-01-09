@@ -1,3 +1,5 @@
+use v6.c;
+
 unit module Test::Output;
 use Test;
 

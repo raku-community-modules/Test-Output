@@ -1,5 +1,6 @@
 #!perl6
 
+use v6.c;
 use lib 'lib';
 use Test;
 use Test::Output;
