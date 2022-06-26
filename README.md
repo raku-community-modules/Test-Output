@@ -3,6 +3,7 @@
 Test::Output - Test the output to STDOUT and STDERR your program generates
 
 # TABLE OF CONTENTS
+
 - [NAME](#name)
 - [SYNOPSIS](#synopsis)
 - [DESCRIPTION](#description)
@@ -237,6 +238,31 @@ Same as [`output-from`](#output-from), except captures STDERR only.
 
 ----
 
+### `test-output-verbosity`
+
+![][sub-signature]
+```raku
+    sub test-output-verbosity (Bool :$on, Bool :$off) returns Str;
+```
+
+![][sub-usage-example]
+```raku
+    # turn verbosity on
+    test-output-verbosity(:on);
+    
+    my $output = output-from { do-something-interactive() };
+    # test output will now displayed during the test
+    
+    # turn verbosity off
+    test-output-verbosity(:off);
+```
+
+Display the code's output while the test code is executed. This can be
+very useful for author tests that require you to enter input based on
+the output.
+
+----
+
 # REPOSITORY
 
 Fork this module on GitHub:
@@ -258,4 +284,5 @@ The Artistic License 2.0. See the `LICENSE` file included in this
 distribution for complete details.
 
 [sub-signature]: _chromatin/sub-signature.png
+
 [sub-usage-example]: _chromatin/sub-usage-example.png
