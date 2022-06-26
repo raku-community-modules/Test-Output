@@ -1,6 +1,13 @@
 unit module Test::Output;
 use Test;
 
+my Bool $verbosity;
+
+sub test-output-verbosity(Bool :$on = True, Bool :$off = False) is export {
+    $verbosity =  $on ?? True !! False;
+    $verbosity =  $off ?? False !! True;
+}
+
 my class IO::Bag {
     has @.err-contents;
     has @.out-contents;
@@ -14,13 +21,22 @@ my class IO::Bag {
 my class IO::Capture::Single is IO::Handle {
     has Bool    $.is-err =  False   ;
     has IO::Bag $.bag    is required;
-    
+    has IO::Handle $.orig-handle;
+
     submethod TWEAK {
         self.encoding: 'utf8'; # set up encoder/decoder 
     }
 
     method WRITE( IO::Handle:D: Blob:D \data --> Bool:D ) {
         my $str = data.decode();
+
+        if $verbosity {
+            my $saved-out = $!is-err ?? $PROCESS::ERR !! $PROCESS::OUT;
+            $!is-err ?? ($PROCESS::ERR = $!orig-handle) !! ($PROCESS::OUT = $!orig-handle);
+            say $str.chomp;
+            $!is-err ?? ($PROCESS::ERR = $saved-out) !! ($PROCESS::OUT = $saved-out);
+        }
+
         $.bag.all-contents.push: $str;
         $!is-err ?? $.bag.err-contents.push: $str
                  !! $.bag.out-contents.push: $str;
@@ -30,20 +46,20 @@ my class IO::Capture::Single is IO::Handle {
 }
 
 my sub capture (&code) {
-    my $bag = IO::Bag.new;
-    my $out = IO::Capture::Single.new: :$bag        ;
-    my $err = IO::Capture::Single.new: :$bag :is-err;
+    my $orig-out = $PROCESS::OUT;
+    my $orig-err = $PROCESS::ERR;
 
-    my $saved-out = $PROCESS::OUT;
-    my $saved-err = $PROCESS::ERR;
+    my $bag = IO::Bag.new;
+    my $out = IO::Capture::Single.new: :$bag, orig-handle => $orig-out;
+    my $err = IO::Capture::Single.new: :$bag, orig-handle => $orig-err, :is-err;
 
     $PROCESS::OUT = $out;
     $PROCESS::ERR = $err;
 
     &code();
 
-    $PROCESS::OUT = $saved-out;
-    $PROCESS::ERR = $saved-err;
+    $PROCESS::OUT = $orig-out;
+    $PROCESS::ERR = $orig-err;
 
     return {:out($bag.out), :err($bag.err), :all($bag.all)};
 }
