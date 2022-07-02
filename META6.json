@@ -1,7 +1,7 @@
 {
   "name": "Test::Output",
   "description": "Test the output to STDOUT and STDERR your program generates",
-  "version": "1.001003",
+  "version": "1.001004",
   "perl": "6.d",
   "authors": [
     "Zoffix Znet",
