@@ -27,11 +27,11 @@ is stderr-from( &test-code ), "warning!{$nl}", 'stderr-from works';
 test-output-verbosity(:on);
 output-is   &test-code, "42{$nl}warning!{$nl}warning!{$nl}After warning{$nl}", 'verbosity testing output-is';
 
-output-like &test-code, /42.+warning '!' "\n" warning.+After/, 'verbosity testing output-like';
+output-like &test-code, /42.+warning '!' "{$nl}" warning.+After/, 'verbosity testing output-like';
 
 stdout-is   &test-code, "42{$nl}warning!{$nl}After warning{$nl}";
 
-stdout-like &test-code, /42 "\n" warning '!'/;
+stdout-like &test-code, /42 "{$nl}" warning '!'/;
 
 stderr-is   &test-code, "warning!{$nl}";
 
