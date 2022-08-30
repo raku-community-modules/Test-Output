@@ -1,4 +1,7 @@
 Revision History for 'Test::Output' Perl 6 Distribution
 
+1.001004  2022-08-26
+  - Fix broken windows tests
+
 1.001001  2016-01-07
   - First version released on an unsuspecting world
