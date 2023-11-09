@@ -1,23 +1,31 @@
 {
-  "name": "Test::Output",
-  "description": "Test the output to STDOUT and STDERR your program generates",
-  "version": "1.001005",
-  "perl": "6.d",
+  "auth": "zef:raku-community-modules",
   "authors": [
     "Zoffix Znet",
     "JJ Merelo"
   ],
+  "build-depends": [
+  ],
   "depends": [
     "Test"
   ],
+  "description": "Test the output to STDOUT and STDERR your program generates",
+  "license": "Artistic-2.0",
+  "name": "Test::Output",
   "provides": {
-    "Test::Output": "lib/Test/Output.pm6"
+    "Test::Output": "lib/Test/Output.rakumod"
   },
+  "raku": "6.d",
   "resources": [
     "examples/output-test.t"
   ],
+  "source-url": "https://github.com/raku-community-modules/Test-Output.git",
   "support": {
     "source": "git://github.com/raku-community-modules/Test-Output.git"
   },
-  "license": "Artistic-2.0"
+  "tags": [
+  ],
+  "test-depends": [
+  ],
+  "version": "1.001006"
 }

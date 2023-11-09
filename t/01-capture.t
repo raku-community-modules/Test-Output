@@ -1,4 +1,7 @@
-#!perl6
+#!raku
+
+use v6.d;
+
 use lib '.';
 use Test;
 use Test::Output;

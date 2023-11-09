@@ -1,4 +1,9 @@
-Revision History for 'Test::Output' Perl 6 Distribution
+Revision History for 'Test::Output' Raku Distribution
+
+{{$NEXT}}
+
+1.001006  2023-11-09T11:36:06+01:00
+  - First release over Fez
 
 1.001004  2022-08-26
   - Fix broken windows tests
